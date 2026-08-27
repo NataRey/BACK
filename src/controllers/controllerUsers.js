@@ -48,6 +48,66 @@ const ControllerUsers = {
             });
         }
     },
+
+    readUsersId: async(sol, res)=>{
+        try {
+            const userFound = await modelUser.findById(
+                sol.params.id
+            );
+            if(userFound._id){
+                res.json({
+                result: 'fine',
+                message: 'user found',
+                data: userFound,
+                });
+            }
+        } catch (error) {
+                res.json({
+                result: 'mistake',
+                message: 'An error occurred while reading the user',
+                data: error,
+            });
+        }
+    },
+    deleteUser: async(sol, res)=>{
+        try{
+            const userDelete = await modelUser.findByIdAndDelete(sol.params.id);
+                if(userDelete._id){
+                    res.json({
+                    result: 'fine',
+                    message: 'User Delete',
+                    data: null,
+                });
+            }
+        }catch (error) {
+            res.json({
+                result: 'mistake',
+                message: 'An error occurred while deleting the user',
+                data: error,
+            });
+        }
+    }, 
+    updateUser : async (sol, res)=>{
+        try {
+            const userUpdate = await modelUser.findByIdAndUpdate(
+                sol.params.id,
+                sol.body
+            );
+            if(userUpdate._id){
+                res.json({
+                    result: 'fine',
+                    message: 'User Update',
+                    data: userUpdate,
+                });
+            }
+        } catch (error) {
+            res.json({
+                result: 'mistake',
+                message: 'An error occurred while updating the user',
+                data: error,
+            });
+        }
+    }
 }
 
 
