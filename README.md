@@ -15,4 +15,11 @@
 * npm i morgan
 4. Organizar los archivos con los que voy a trabajar 
 5. importamos las dependencias
+6. creamos los archivos para la conexion a la bd y al servidor 
+7. inciamos el CRUD de objetos
+8. primero creamos el Schema de la bd 
+9. creamos el controlador (logica o CRUD)
+10. creamos las rutas
+11. llamamos a esas rutas en el servidor
+
 

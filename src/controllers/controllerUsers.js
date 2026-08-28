@@ -5,7 +5,6 @@ const ControllerUsers = {
     createUser: async(sol , res)=>{
         try{
             const {name, email, password} = sol.body;
-            console.log(sol.body);
             const passwordProtected = await bcrypt.hash(password, 10);
             const newUser = new modelUser({
                 name,
@@ -19,7 +18,7 @@ const ControllerUsers = {
                 res.json({
                     result: 'fine',
                     message: 'User created',
-                    data: userCreate._id,
+                    data: userCreate,
                 });
             }
         }catch(error){
@@ -109,6 +108,5 @@ const ControllerUsers = {
         }
     }
 }
-
 
 export default ControllerUsers;
