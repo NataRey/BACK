@@ -88,9 +88,15 @@ const ControllerUsers = {
     }, 
     updateUser : async (sol, res)=>{
         try {
+             const dataToUpdate = { ...sol.body };
+            if (dataToUpdate.password) {
+                dataToUpdate.password = await bcrypt.hash(dataToUpdate.password, 10);
+            }
+
             const userUpdate = await modelUser.findByIdAndUpdate(
                 sol.params.id,
-                sol.body
+                dataToUpdate,
+                { new: true } 
             );
             if(userUpdate._id){
                 res.json({
