@@ -19,7 +19,7 @@ const controllerLogin = {
                 });
                 res.json({
                     result: 'fine',
-                    message: 'Successful access',
+                    message: `Successful access welcome ${userFound.name}`,
                     data: token,
                 });
             }else{
